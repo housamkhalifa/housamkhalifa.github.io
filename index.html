@@ -1,62 +1,342 @@
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <meta name="generator" content="HTML Tidy for Linux/x86 (vers 11 February 2007), see www.w3.org">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style type="text/css">
-  /* Design Modified from: Jon Barron and Saurabh Gupta. Thanks to Jeff Donahue for email scamble.*/
+  /* Al-folio inspired styling */
+  :root {
+    --primary-color: #b509ac;
+    --secondary-color: #0076df;
+    --accent-color: #f29105;
+    --text-color: #333;
+    --text-light: #828282;
+    --bg-color: #ffffff;
+    --border-color: #e8e8e8;
+    --hover-color: #f8f9fa;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Source Sans Pro', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+
   a {
-  color: #1772d0;
-  text-decoration:none;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.2s ease;
   }
-  a:focus, a:hover {
-  color: #f09228;
-  text-decoration:none;
+
+  a:hover, a:focus {
+    color: var(--secondary-color);
+    text-decoration: underline;
   }
-  body,td,th {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: 400
+
+  .profile-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
   }
-  heading {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    font-size: 17px; /* 19 */
-    font-weight: 600 /* 1000 */
+
+  .profile-image {
+    flex: 0 0 250px;
   }
-  hr
-  {
-    border: 0;
+
+  .profile-image img {
+    width: 100%;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .profile-content {
+    flex: 1;
+    min-width: 300px;
+  }
+
+  .name {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--text-color);
+    margin: 0 0 0.5rem 0;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    color: var(--text-light);
+    margin-bottom: 1rem;
+  }
+
+  .bio {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .social-links a {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    background-color: var(--bg-color);
+    transition: all 0.2s ease;
+  }
+
+  .social-links a:hover {
+    background-color: var(--hover-color);
+    border-color: var(--primary-color);
+    text-decoration: none;
+  }
+
+  .section {
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--primary-color);
+  }
+
+  .news-list {
+    list-style: none;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+  }
+
+  .news-list::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .news-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+  }
+
+  .news-list::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 3px;
+  }
+
+  .news-list::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+  }
+
+  .news-list li {
+    margin-bottom: 0.8rem;
+    padding: 0.8rem;
+    background-color: #fafafa;
+    border-left: 4px solid var(--primary-color);
+    border-radius: 4px;
+  }
+
+  .news-date {
+    font-weight: 600;
+    color: var(--primary-color);
+  }
+
+  .publications {
+    display: grid;
+    gap: 2rem;
+  }
+
+  .publication {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: #fafafa;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .publication:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+
+  .publication-image {
+    flex: 0 0 150px;
+  }
+
+  .publication-image img {
+    width: 100%;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+  }
+
+  .publication-content {
+    flex: 1;
+  }
+
+  .publication-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .publication-authors {
+    color: var(--text-light);
+    margin-bottom: 0.3rem;
+  }
+
+  .publication-venue {
+    font-style: italic;
+    color: var(--text-light);
+    margin-bottom: 0.8rem;
+  }
+
+  .publication-links a {
+    margin-right: 0.8rem;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+  }
+
+  .publication-links a:hover {
+    background-color: var(--secondary-color);
+    text-decoration: none;
+  }
+
+  .awards-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .awards-list li {
+    margin-bottom: 0.8rem;
+    padding: 0.8rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+    border-left: 4px solid var(--accent-color);
+  }
+
+  hr {
+    border: none;
     height: 1px;
-    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    background: linear-gradient(to right, transparent, var(--border-color), transparent);
+    margin: 3rem 0;
   }
-  strong {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    font-size: 16px;
-    font-weight: 600 /* 800 */
+
+  .footer {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
   }
-  strongred {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    color: 'red' ;
-    font-size: 16px
+
+  /* Tab Navigation */
+  .tabs {
+    margin: 2rem 0;
   }
-  sectionheading {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    font-size: 22px;
-    font-weight: 600
+
+  .tab-nav {
+    display: flex;
+    border-bottom: 2px solid var(--border-color);
+    margin-bottom: 2rem;
+    gap: 0;
   }
-  pageheading {
-    font-family: 'Titillium Web', Verdana, Helvetica, sans-serif;
-    font-size: 38px;
-    font-weight: 400
+
+  .tab-button {
+    background: none;
+    border: none;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-light);
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    position: relative;
   }
-  .ImageBorder
-  {
-      border-width: 1px;
-      border-color: Black;
+
+  .tab-button:hover {
+    color: var(--primary-color);
+    background-color: var(--hover-color);
   }
-  span.highlight {
-  background-color: #ffffd0;
+
+  .tab-button.active {
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+    font-weight: 500;
+  }
+
+  .tab-content {
+    display: none;
+  }
+
+  .tab-content.active {
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 1rem;
+    }
+    
+    .profile-section {
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    .profile-image {
+      flex: none;
+      align-self: center;
+    }
+    
+    .name {
+      font-size: 2rem;
+    }
+    
+    .publication {
+      flex-direction: column;
+    }
+    
+    .publication-image {
+      flex: none;
+      align-self: center;
+    }
   }
   </style>
   <link rel="shortcut icon" href="images/ualberta.ico" type="image/vnd.microsoft.icon">
@@ -79,418 +359,237 @@
 </head>
 
 <body>
-<table width="840" border="0" align="center" border="0" cellspacing="0" cellpadding="20">
-  <tr><td>
-
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="20">
-  <p align="center">
-    
-    <pageheading>Housam Babiker</pageheading><br>
-     PhD in Computing Science <br> University of Alberta <br>
-    <font id="email" style="display:inline;">
-      <noscript><i>Please enable Javascript to view</i></noscript>
-    </font>
-  </p>
-
-  <tr>
-    <td width="32%" valign="top"><a href="images/
-      housam2.jpg"><img src="images/housam.png" width="100%" style="border-radius:15px"></a>
-    </td>
-    <td width="68%" valign="top" align="justify">
-    <p>Housam Babiker received his PhD in Computing Science degree from the University of Alberta, Canada. During the doctoral study, he developed  explainable AI techniques for deep learning, mainly in the natural language processing (NLP) domain, working at the <a href="https://sites.ualberta.ca/~amiixai/index.html" target="_blank"> Explainable Artificial Intelligence (XAI) lab </a> under the supervision of <a href="https://www.amii.ca/about/our-people/randy-goebel/" target="_blank">Prof. Randy Goebel. </a> Housam's research interests include explainable AI, deep learning, reinforcement learning and their applications to real-world problems.
-    </p>
-<p style="text-align:center">
-                <a href="mailto: khalifab@ualberta.ca">Email</a> &nbsp|&nbsp
-                <a href="images/Housam_s_cv.pdf" target="_blank">CV</a> &nbsp|&nbsp
-                <a href="https://scholar.google.com/citations?user=DkwFI28AAAAJ&hl=en" target="_blank">Google Scholar</a> &nbsp
-              </p>
-            
-    </td>
-  </tr>
-</table>
-
-<hr/>
-
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-  <tr><td>
-    <sectionheading>&nbsp;&nbsp;News</sectionheading>
-    <ul>
-      <li> <b>July 2023:</b> Our work on learning intermediate representations for hierarchial expalantions is accepted in ECAI 2023.</li>
-    <li> <b>July 2023:</b> Our work on explaning RL agents for autonomous driving actions is accepted in ITSC 2023.</li>
-    <li> <b>March 2023:</b> Defended the PhD thesis.</li>
-    <li> <b>August 2022:</b> Our paper entitled <a href="https://aclanthology.org/2022.coling-1.83.pdf" target="_blank"> "Locally Distributed Activation Vector for Feature Attribution" </a>  was accepted to COLING 2022 in Gyeongju, South-Korea.</li>
-    <li> <b>June 2022:</b> Our paper entitled <a href="https://link.springer.com/chapter/10.1007/978-3-031-26387-3_23" target="_blank"> "Neural Networks with Feature Attribution and Contrastive Explanations" </a> was accepted to ECML-PKDD 2022 in Grenoble, France. </li>
-    <li> <b>May 2022:</b> Presented our poster: Self-explainable models in natural language processing in <a href="https://www.ai-week.ca/" target="_blank"> AI Week 2022 </a> in Edmonton, Canada. </li>
-    <li> <b>Nov 2021:</b> Our paper entitled <a href="https://www.mdpi.com/2504-4990/3/4/45/htm" target="_blank"> "A Multi-Component Framework for the Analysis and Design of Explainable Artificial Intelligence" </a> was published in the Machine Learning and Knowledge Extraction journal.</li>
-    </ul>
-  </td></tr>
-</table>
-
-
-<div class='section_div' id='ResearchGroup'>
-<table width="100%" width="100%" align="center" border="0" cellspacing="0" cellpadding="8" style="margin-left:15px">
-<tr><td colspan="2"><sectionheading>Research</sectionheading></td></tr>
-<tr><td colspan="2">
-  Research on making <b>deep learning </b> and <b>deep reinforcement learning</b> more interpretable and explainable is receiving much attention. 
-  One of the main reasons is the application of deep learning models to high-stake domains. Also, using explanations as a proxy for debugging models 
-  so that we could improve performance, learn new insights, and also use explanations as a proxy for compression and distillation. In general, interpretability is an essential component for deploying deep 
-  learning models. In my doctoral research, I worked on explainability and robustness of deep learning, primarily in the NLP domain. My general research interests include Explainable AI, Deep Learning, and Foundation Models for Decision Making, such as Transformers and Transfer Learning.  
-<br/>
-</td></tr>
-
-
-<hr/>
-
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-  <tr><td><sectionheading>&nbsp;&nbsp;Research Articles</td></tr>
-</table>
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="15">
-<br/>
-
-
-
-
-
-
-<tr>
-  <td width="33%" valign="center" align="center">
-  <img src="images/ecai2023.png" alt="sym" width="90%" style="padding-top:0px;padding-bottom:0px;border-radius:15px;border:1px solid black">
-  </a></td>
-  <td width="67%" valign="top">
-    <p><a href="https://ebooks.iospress.nl/volumearticle/64198" target="_blank">
-
-      <heading >From Intermediate Representations to Explanations:
-Exploring Hierarchical Structures in NLP</heading></a><br>
-      Housam Babiker, Mi-Young Kim, Randy Goebel<br><br>
-      <i>ECAI, 2023, Acceptance rate: 24%</i>
-      </p>
-
-      <div class="paper" id="nips17">
-      <a href="https://ebooks.iospress.nl/doi/10.3233/FAIA230266" target="_blank">Paper</a>
-      
-      <br>
-
+  <div class="container">
+    <header class="profile-section">
+      <div class="profile-image">
+        <img src="images/housam.png" alt="Housam Babiker">
       </div>
-    </td>
-  </tr>
-
-
-
-
-  
-<tr>
-  <td width="33%" valign="center" align="center">
-  <img src="images/coling2022.png" alt="sym" width="90%" style="padding-top:0px;padding-bottom:0px;border-radius:15px;border:1px solid black">
-  </a></td>
-  <td width="67%" valign="top">
-    <p><a href="https://aclanthology.org/2022.coling-1.83.pdf" target="_blank">
-
-      <heading >Locally Distributed Activation Vectors for Guided Feature Attribution</heading></a><br>
-      Housam Babiker, Mi-Young Kim, Randy Goebel<br><br>
-      <i>COLING, 2022</i>
-      </p>
-
-      <div class="paper" id="nips17">
-      <a href="https://aclanthology.org/2022.coling-1.83.pdf" target="_blank">Paper</a>
-      
-      <br>
-
+      <div class="profile-content">
+        <h1 class="name">Housam Babiker</h1>
+        <div class="title">PhD in Computing Science<br>University of Alberta</div>
+        <div class="bio">
+          Housam Babiker received his PhD in Computing Science degree from the University of Alberta, Canada. During the doctoral study, he developed explainable AI techniques for deep learning, mainly in the natural language processing (NLP) domain, working at the <a href="https://sites.ualberta.ca/~amiixai/index.html" target="_blank">Explainable Artificial Intelligence (XAI) lab</a> under the supervision of <a href="https://www.amii.ca/about/our-people/randy-goebel/" target="_blank">Prof. Randy Goebel.</a> Housam's research interests include explainable AI, deep learning, reinforcement learning and their applications to real-world problems.
+        </div>
+        <div class="social-links">
+          <a href="mailto:khalifab@ualberta.ca">Email</a>
+          <a href="images/Housam_s_cv.pdf" target="_blank">CV</a>
+          <a href="https://scholar.google.com/citations?user=DkwFI28AAAAJ&hl=en" target="_blank">Google Scholar</a>
+        </div>
       </div>
-    </td>
-  </tr>
+    </header>
 
+    <div class="tabs">
+      <nav class="tab-nav">
+        <button class="tab-button active" onclick="openTab(event, 'about')">About</button>
+        <button class="tab-button" onclick="openTab(event, 'research')">Research</button>
+        <button class="tab-button" onclick="openTab(event, 'publications')">Publications</button>
+        <button class="tab-button" onclick="openTab(event, 'awards')">Awards</button>
+      </nav>
 
-
-<tr>
-  <td width="33%" valign="center" align="center">
-  <img src="images/ecml2022.png" alt="sym" width="90%" style="padding-top:0px;padding-bottom:0px;border-radius:15px;border:1px solid black">
-  </a></td>
-  <td width="67%" valign="top">
-    <p><a href="https://link.springer.com/chapter/10.1007/978-3-031-26387-3_23" target="_blank">
-
-      <heading >Neural Networks with Feature Attribution and Contrastive Explanations</heading></a><br>
-      Housam Babiker, Mi-Young Kim, Randy Goebel<br><br>
-      <i>ECML-PKDD, 2022, Acceptance rate: 26%</i>
-      </p>
-
-      <div class="paper" id="nips17">
-      <a href="https://link.springer.com/chapter/10.1007/978-3-031-26387-3_23" target="_blank">Paper</a>
-      
-      <br>
-
+      <div id="about" class="tab-content active">
+        <section class="section">
+      <h2 class="section-title">News</h2>
+      <ul class="news-list">
+        <li><span class="news-date">July 2023:</span> Our work on learning intermediate representations for hierarchical explanations is accepted in ECAI 2023.</li>
+        <li><span class="news-date">July 2023:</span> Our work on explaining RL agents for autonomous driving actions is accepted in ITSC 2023.</li>
+        <li><span class="news-date">March 2023:</span> Defended the PhD thesis.</li>
+        <li><span class="news-date">August 2022:</span> Our paper entitled <a href="https://aclanthology.org/2022.coling-1.83.pdf" target="_blank">"Locally Distributed Activation Vector for Feature Attribution"</a> was accepted to COLING 2022 in Gyeongju, South-Korea.</li>
+        <li><span class="news-date">June 2022:</span> Our paper entitled <a href="https://link.springer.com/chapter/10.1007/978-3-031-26387-3_23" target="_blank">"Neural Networks with Feature Attribution and Contrastive Explanations"</a> was accepted to ECML-PKDD 2022 in Grenoble, France.</li>
+        <li><span class="news-date">May 2022:</span> Presented our poster: Self-explainable models in natural language processing in <a href="https://www.ai-week.ca/" target="_blank">AI Week 2022</a> in Edmonton, Canada.</li>
+        <li><span class="news-date">Nov 2021:</span> Our paper entitled <a href="https://www.mdpi.com/2504-4990/3/4/45/htm" target="_blank">"A Multi-Component Framework for the Analysis and Design of Explainable Artificial Intelligence"</a> was published in the Machine Learning and Knowledge Extraction journal.</li>
+      </ul>
+    </section>
       </div>
-    </td>
-  </tr>
 
-<tr>
-  <td width="33%" valign="center" align="center">
-  <img src="images/eacl2021.png" alt="sym" width="90%" style="padding-top:0px;padding-bottom:0px;border-radius:15px;border:1px solid black">
-  </a></td>
-  <td width="67%" valign="top">
-    <p><a href="https://aclanthology.org/2021.eacl-main.263.pdf" target="_blank">
-    
-      <heading>DISK-CSV: Distilling Interpretable Semantic Knowledge with a Class Semantic Vector</heading></a><br>
-      Housam Babiker, Mi-Young Kim, Randy Goebel<br><br>
-      <i>EACL 2021, Acceptance rate: 23%</i>
-      </p>
-
-      <div class="paper" id="nips17">
-      <a href="https://aclanthology.org/2021.eacl-main.263.pdf" target="_blank">Paper</a>
-      
-      <br>
-
+      <div id="research" class="tab-content">
+        <section class="section">
+          <h2 class="section-title">Research</h2>
+          <p>
+            Research on making <strong>deep learning</strong> and <strong>deep reinforcement learning</strong> more interpretable and explainable is receiving much attention. 
+            One of the main reasons is the application of deep learning models to high-stake domains. Also, using explanations as a proxy for debugging models 
+            so that we could improve performance, learn new insights, and also use explanations as a proxy for compression and distillation. In general, interpretability is an essential component for deploying deep 
+            learning models. In my doctoral research, I worked on explainability and robustness of deep learning, primarily in the NLP domain. My general research interests include Explainable AI, Deep Learning, and Foundation Models for Decision Making, such as Transformers and Transfer Learning.
+          </p>
+        </section>
       </div>
-    </td>
-  </tr>
+
+      <div id="publications" class="tab-content">
+        <section class="section">
+          <h2 class="section-title">Research Articles</h2>
+      <div class="publications">
 
 
-<tr>
-  <td width="33%" valign="center" align="center">
-  <img src="images/coling2020.png" alt="sym" width="90%" style="padding-top:0px;padding-bottom:0px;border-radius:15px;border:1px solid black">
-  </a></td>
-  <td width="67%" valign="top">
-    <p><a href="https://aclanthology.org/2020.coling-main.286.pdf" target="_blank">
-    
-      <heading>RANCC: Rationalizing Neural Networks via Concept Clustering</heading></a><br>
-      Housam Babiker, Mi-Young Kim, Randy Goebel<br><br>
-      <i>COLING 2020, Acceptance rate: 32%</i>
-      </p>
 
-      <div class="paper" id="nips17">
-      <a href="https://aclanthology.org/2020.coling-main.286.pdf" target="_blank">Paper</a>
-      
-      <br>
 
+
+
+        <article class="publication">
+          <div class="publication-image">
+            <img src="images/ecai2023.png" alt="ECAI 2023 paper">
+          </div>
+          <div class="publication-content">
+            <h3 class="publication-title">
+              <a href="https://ebooks.iospress.nl/volumearticle/64198" target="_blank">From Intermediate Representations to Explanations: Exploring Hierarchical Structures in NLP</a>
+            </h3>
+            <div class="publication-authors">Housam Babiker, Mi-Young Kim, Randy Goebel</div>
+            <div class="publication-venue">ECAI, 2023, Acceptance rate: 24%</div>
+            <div class="publication-links">
+              <a href="https://ebooks.iospress.nl/doi/10.3233/FAIA230266" target="_blank">Paper</a>
+            </div>
+          </div>
+        </article>
+
+
+
+
+        <article class="publication">
+          <div class="publication-image">
+            <img src="images/coling2022.png" alt="COLING 2022 paper">
+          </div>
+          <div class="publication-content">
+            <h3 class="publication-title">
+              <a href="https://aclanthology.org/2022.coling-1.83.pdf" target="_blank">Locally Distributed Activation Vectors for Guided Feature Attribution</a>
+            </h3>
+            <div class="publication-authors">Housam Babiker, Mi-Young Kim, Randy Goebel</div>
+            <div class="publication-venue">COLING, 2022</div>
+            <div class="publication-links">
+              <a href="https://aclanthology.org/2022.coling-1.83.pdf" target="_blank">Paper</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="publication-image">
+            <img src="images/ecml2022.png" alt="ECML-PKDD 2022 paper">
+          </div>
+          <div class="publication-content">
+            <h3 class="publication-title">
+              <a href="https://link.springer.com/chapter/10.1007/978-3-031-26387-3_23" target="_blank">Neural Networks with Feature Attribution and Contrastive Explanations</a>
+            </h3>
+            <div class="publication-authors">Housam Babiker, Mi-Young Kim, Randy Goebel</div>
+            <div class="publication-venue">ECML-PKDD, 2022, Acceptance rate: 26%</div>
+            <div class="publication-links">
+              <a href="https://link.springer.com/chapter/10.1007/978-3-031-26387-3_23" target="_blank">Paper</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="publication-image">
+            <img src="images/eacl2021.png" alt="EACL 2021 paper">
+          </div>
+          <div class="publication-content">
+            <h3 class="publication-title">
+              <a href="https://aclanthology.org/2021.eacl-main.263.pdf" target="_blank">DISK-CSV: Distilling Interpretable Semantic Knowledge with a Class Semantic Vector</a>
+            </h3>
+            <div class="publication-authors">Housam Babiker, Mi-Young Kim, Randy Goebel</div>
+            <div class="publication-venue">EACL 2021, Acceptance rate: 23%</div>
+            <div class="publication-links">
+              <a href="https://aclanthology.org/2021.eacl-main.263.pdf" target="_blank">Paper</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="publication-image">
+            <img src="images/coling2020.png" alt="COLING 2020 paper">
+          </div>
+          <div class="publication-content">
+            <h3 class="publication-title">
+              <a href="https://aclanthology.org/2020.coling-main.286.pdf" target="_blank">RANCC: Rationalizing Neural Networks via Concept Clustering</a>
+            </h3>
+            <div class="publication-authors">Housam Babiker, Mi-Young Kim, Randy Goebel</div>
+            <div class="publication-venue">COLING 2020, Acceptance rate: 32%</div>
+            <div class="publication-links">
+              <a href="https://aclanthology.org/2020.coling-main.286.pdf" target="_blank">Paper</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="publication-image">
+            <img src="images/multi.jpg" alt="Multi-component framework paper">
+          </div>
+          <div class="publication-content">
+            <h3 class="publication-title">
+              <a href="https://www.mdpi.com/2504-4990/3/4/45/htm" target="_blank">A Multi-Component Framework for the Analysis and Design of Explainable Artificial Intelligence</a>
+            </h3>
+            <div class="publication-authors">Mi-Young Kim, Shahin Atakishiyev, Housam Khalifa Bashier Babiker, Nawshad Farruque, Randy Goebel, Osmar R. Zaïane, Mohammad-Hossein Motallebi, Juliano Rabelo, Talat Syed, Hengshuai Yao, Peter Chun</div>
+            <div class="publication-venue">Machine Learning and Knowledge Extraction Journal, 2021</div>
+            <div class="publication-links">
+              <a href="https://www.mdpi.com/2504-4990/3/4/45/htm" target="_blank">Paper</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="publication">
+          <div class="publication-image">
+            <img src="images/icip2017.png" alt="ICIP 2017 paper">
+          </div>
+          <div class="publication-content">
+            <h3 class="publication-title">
+              <a href="https://ieeexplore.ieee.org/abstract/document/8296583" target="_blank">Facial expression recognition using SVM classification on mic-macro patterns</a>
+            </h3>
+            <div class="publication-authors">Housam Babiker, Irene Cheng, Randy Goebel</div>
+            <div class="publication-venue">ICIP 2017</div>
+            <div class="publication-links">
+              <a href="https://ieeexplore.ieee.org/abstract/document/8296583" target="_blank">Paper</a>
+            </div>
+          </div>
+        </article>
       </div>
-    </td>
-  </tr>
-
-
-
-<tr>
-  <td width="33%" valign="center" align="center">
-  <img src="images/multi.jpg" alt="sym" width="90%" style="padding-top:0px;padding-bottom:0px;border-radius:15px;border:1px solid black">
-  </a></td>
-  <td width="67%" valign="top">
-        <p><a href="https://www.mdpi.com/2504-4990/3/4/45/htm" target="_blank">
-
-    
-      <heading>A Multi-Component Framework for the Analysis and Design of Explainable Artificial Intelligence</heading></a><br>
-      Mi-Young Kim, Shahin Atakishiyev, Housam Khalifa Bashier Babiker<br/>Nawshad Farruque, Randy Goebel, Osmar R. Zaïane, Mohammad-Hossein Motallebi,
-      Juliano Rabelo, Talat Syed, Hengshuai Yao, Peter Chun <br><br>
-      <i>Machine Learning and Knowledge Extraction Journal, 2021</i>
-      
-      </p>
-
-      <div class="paper" id="nips17">
-      <a href="https://www.mdpi.com/2504-4990/3/4/45/htm" target="_blank">Paper</a>
-      
-      <br>
-
+        </section>
       </div>
-    </td>
-  </tr>
 
-<tr>
-  <td width="33%" valign="center" align="center">
-  <img src="images/icip2017.png" alt="sym" width="90%" style="padding-top:0px;padding-bottom:0px;border-radius:15px;border:1px solid black">
-  </a></td>
-  <td width="67%" valign="top">
-    <p><a href="https://ieeexplore.ieee.org/abstract/document/8296583" target="_blank">
-    
-      <heading>Facial expression recognition using SVM classification on mic-macro patterns</heading></a><br>
-      Housam Babiker, Irene Cheng, Randy Goebel<br><br>
-      <i>ICIP 2017</i>
-      </p>
-
-      <div class="paper" id="nips17">
-      <a href="https://ieeexplore.ieee.org/abstract/document/8296583" target="_blank">Paper</a>
-      
-      <br>
-
-      </div>
-    </td>
-  </tr>
-
-
-<hr/>
-
-<table width="100%" align="center" border="0" cellpadding="10">
-  <tr><td>
-    <sectionheading>&nbsp;&nbsp;Selected Awards</sectionheading>
-          <ul>
+      <div id="awards" class="tab-content">
+        <section class="section">
+          <h2 class="section-title">Selected Awards</h2>
+          <ul class="awards-list">
             <li>Highest performance on task 4 of the COLIEE Competition, Japan, 2018.</li>
             <li>GSA Travel Award, University of Alberta, Canada, 2017.</li>
-            <li>Full Doctoral Scholarship: Awarded by the Computing Science Department of the University of Alberta, Canada, 2016. </li>
+            <li>Full Doctoral Scholarship: Awarded by the Computing Science Department of the University of Alberta, Canada, 2016.</li>
           </ul>
-  </td></tr>
-</table>
+        </section>
+      </div>
 
-<hr/>
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
-    <tr><td>
-<script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=L1Ecx6ij2z2LnhVyYQx5NhHxL1HelLd9E5S69Z72XNk&cl=ffffff&w=250"></script>
-  </td></tr>
-  </table>
+    </div>
 
-  <hr/>
+    <table width="100%" align="center" border="0" cellspacing="0" cellpadding="10">
+      <tr><td>
+        <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=L1Ecx6ij2z2LnhVyYQx5NhHxL1HelLd9E5S69Z72XNk&cl=ffffff&w=250"></script>
+      </td></tr>
+    </table>
 
-<table width="100%" align="center" border="0" cellspacing="0" cellpadding="2">
-    <tr><td><br><p align="right"><font size="1.5">
-   &copy; 2023 Housam Babiker. Website layout from <a href="https://webdocs.cs.ualberta.ca/~atakishi/" target="_blank">here</a> and <a href="http://www.cs.berkeley.edu/~barron/" target="_blank">here</a>
-    </font></p></td></tr>
-</table>
+    <footer class="footer">
+      &copy; 2023 Housam Babiker. Website layout inspired by <a href="https://webdocs.cs.ualberta.ca/~atakishi/" target="_blank">here</a> and <a href="http://www.cs.berkeley.edu/~barron/" target="_blank">here</a>
+    </footer>
+  </div>
 
-  </td></tr>
-</table>
-
-<script xml:space="preserve" language="JavaScript">
-hideallbibs();
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('jpm15_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('fg15_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('wacv15_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('iclr15_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('cvpr15_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('iccv15_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('jmlr16_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('cvpr16_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('iclr16_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('cvpr17_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('icml17_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('nips17_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('iclr18_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('icml18_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('cvprw18_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('iclr19_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('assemblies19_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('sgm20_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('compgan18_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('icml19_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('phd19_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('neurips19_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('plan2explore_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('icml20_smp_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('uai20_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('neurips20_ndp_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('iclr21_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('worldsheet_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('flavr_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('icra21_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('ral21_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('keypoint3D_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('spt_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('hndp_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('rma_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('energyloco_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('lexa_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('raps_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('lff_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('envexplore_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('rtk_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('tars_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('clear_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('rb2_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('navloco_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('gptplanner_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('geometrydex_abs');
-</script>
-<script xml:space="preserve" language="JavaScript">
-hideblock('revolver_abs');
-</script>
+  <script src="js/scramble.js"></script>
+  <script type="text/javascript">
+    // Email scrambling script
+    document.getElementById('email').innerHTML = 'khalifab@ualberta.ca';
+    
+    // Tab functionality
+    function openTab(evt, tabName) {
+      var i, tabcontent, tabbuttons;
+      
+      // Hide all tab content
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      
+      // Remove active class from all tab buttons
+      tabbuttons = document.getElementsByClassName("tab-button");
+      for (i = 0; i < tabbuttons.length; i++) {
+        tabbuttons[i].classList.remove("active");
+      }
+      
+      // Show the selected tab content and mark button as active
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
 </body>
-
 </html>
