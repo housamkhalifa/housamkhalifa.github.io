@@ -8,29 +8,16 @@
   <style type="text/css">
   /* Al-folio inspired styling */
   :root {
-    --primary-color: #b509ac;
-    --secondary-color: #0076df;
-    --accent-color: #f29105;
-    --text-color: #333;
-    --text-light: #828282;
+    --primary-color: #000000;
+    --secondary-color: #111111;
+    --accent-color: #000000;
+    --text-color: #222222;
+    --text-light: #555555;
     --bg-color: #ffffff;
-    --border-color: #e8e8e8;
-    --hover-color: #f8f9fa;
+    --border-color: #dddddd;
+    --hover-color: #f5f5f5;
     --card-bg: #fafafa;
-    --scrollbar-track: #f1f1f1;
-  }
-
-  [data-theme="dark"] {
-    --primary-color: #b509ac;
-    --secondary-color: #0076df;
-    --accent-color: #f29105;
-    --text-color: #e0e0e0;
-    --text-light: #a0a0a0;
-    --bg-color: #1a1a1a;
-    --border-color: #333;
-    --hover-color: #2a2a2a;
-    --card-bg: #2a2a2a;
-    --scrollbar-track: #333;
+    --scrollbar-track: #ececec;
   }
 
   * {
@@ -39,7 +26,7 @@
 
   body {
     font-family: 'Source Sans Pro', 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 400;
     line-height: 1.6;
     color: var(--text-color);
@@ -49,19 +36,20 @@
   }
 
   .container {
-    max-width: 900px;
+    max-width: 980px;
     margin: 0 auto;
     padding: 2rem;
   }
 
   a {
-    color: var(--primary-color);
+    color: #000000;
+    font-weight: 700;
     text-decoration: none;
     transition: color 0.2s ease;
   }
 
   a:hover, a:focus {
-    color: var(--secondary-color);
+    color: #000000;
     text-decoration: underline;
   }
 
@@ -79,7 +67,9 @@
 
   .profile-image img {
     width: 100%;
-    border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 0;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   }
 
@@ -89,20 +79,21 @@
   }
 
   .name {
-    font-size: 2.5rem;
-    font-weight: 300;
+    font-size: 2.6rem;
+    font-weight: 700;
     color: var(--text-color);
     margin: 0 0 0.5rem 0;
   }
 
   .title {
     font-size: 1.2rem;
+    font-weight: 600;
     color: var(--text-light);
     margin-bottom: 1rem;
   }
 
   .bio {
-    font-size: 1rem;
+    font-size: 1.06rem;
     line-height: 1.7;
     margin-bottom: 1.5rem;
     text-align: justify;
@@ -124,7 +115,7 @@
 
   .social-links a:hover {
     background-color: var(--hover-color);
-    border-color: var(--primary-color);
+    border-color: #000000;
     text-decoration: none;
   }
 
@@ -134,7 +125,7 @@
 
   .section-title {
     font-size: 1.8rem;
-    font-weight: 500;
+    font-weight: 700;
     color: var(--text-color);
     margin-bottom: 1.5rem;
     padding-bottom: 0.5rem;
@@ -144,13 +135,14 @@
   .news-list {
     list-style: none;
     padding: 0;
-    max-height: 400px;
+    max-height: 620px;
     overflow-y: auto;
-    padding-right: 10px;
+    padding-right: 14px;
+    font-size: 1.02rem;
   }
 
   .news-list::-webkit-scrollbar {
-    width: 6px;
+    width: 10px;
   }
 
   .news-list::-webkit-scrollbar-track {
@@ -176,8 +168,8 @@
   }
 
   .news-date {
-    font-weight: 600;
-    color: var(--primary-color);
+    font-weight: 700;
+    color: #000000;
   }
 
   .publications {
@@ -215,8 +207,8 @@
   }
 
   .publication-title {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.12rem;
+    font-weight: 700;
     color: var(--text-color);
     margin-bottom: 0.5rem;
     line-height: 1.4;
@@ -237,13 +229,13 @@
     margin-right: 0.8rem;
     font-size: 0.9rem;
     padding: 0.3rem 0.6rem;
-    background-color: var(--primary-color);
+    background-color: #000000;
     color: white;
     border-radius: 4px;
   }
 
   .publication-links a:hover {
-    background-color: var(--secondary-color);
+    background-color: #222222;
     text-decoration: none;
   }
 
@@ -301,14 +293,14 @@
   }
 
   .tab-button:hover {
-    color: var(--primary-color);
+    color: #000000;
     background-color: var(--hover-color);
   }
 
   .tab-button.active {
-    color: var(--primary-color);
-    border-bottom-color: var(--primary-color);
-    font-weight: 500;
+    color: #000000;
+    border-bottom-color: #000000;
+    font-weight: 700;
   }
 
   .tab-content {
@@ -320,36 +312,16 @@
     animation: fadeIn 0.3s ease-in;
   }
 
+  .tab-content p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
   @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
   }
 
-  /* Theme Toggle Button */
-  .theme-toggle {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    background: var(--card-bg);
-    border: 2px solid var(--border-color);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    z-index: 1000;
-  }
-
-  .theme-toggle:hover {
-    background: var(--hover-color);
-    border-color: var(--primary-color);
-    transform: scale(1.1);
-  }
 
   @media (max-width: 768px) {
     .container {
@@ -400,20 +372,16 @@
 </head>
 
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark mode">
-    <span id="theme-icon">🌙</span>
-  </button>
-  
-  <div class="container">
+<div class="container">
     <header class="profile-section">
       <div class="profile-image">
         <img src="images/housam.jpg" alt="Housam Babiker">
       </div>
       <div class="profile-content">
         <h1 class="name">Housam Babiker</h1>
-        <div class="title">PhD in Computing Science<br>University of Alberta</div>
+        <div class="title">PhD in Artificial Intelligence<br>University of Alberta</div>
         <div class="bio">
-          Housam Babiker received his PhD in Computing Science degree from the University of Alberta, Canada. During the doctoral study, he developed explainable AI techniques for deep learning, mainly in the natural language processing (NLP) domain, working at the <a href=" target="_blank">Explainable Artificial Intelligence (XAI) lab </a>within the Alberta Machine Intelligence Institute <a href="https://www.amii.ca/"> AMII</a> Housam's research interests include explainable AI, deep learning, reinforcement learning and their applications to real-world problems.
+          Housam Babiker received his PhD in Artificial Intelligence degree from the University of Alberta, Canada. During the doctoral study, he developed explainable AI techniques for deep learning, mainly in the natural language processing (NLP) domain, working at the <a href=" target="_blank">Explainable Artificial Intelligence (XAI) lab </a>within the Alberta Machine Intelligence Institute <a href="https://www.amii.ca/"> AMII</a> Housam's research interests include explainable AI, deep learning, reinforcement learning and their applications to real-world problems.
         </div>
         <div class="social-links">
           <a href="mailto:khalifab@ualberta.ca">Email</a>
@@ -688,9 +656,6 @@ Trustworthy Explanations</a>
 
   <script src="js/scramble.js"></script>
   <script type="text/javascript">
-    // Email scrambling script
-    document.getElementById('email').innerHTML = 'khalifab@ualberta.ca';
-    
     // Tab functionality
     function openTab(evt, tabName) {
       var i, tabcontent, tabbuttons;
@@ -711,34 +676,6 @@ Trustworthy Explanations</a>
       document.getElementById(tabName).classList.add("active");
       evt.currentTarget.classList.add("active");
     }
-    
-    // Theme toggle functionality
-    function toggleTheme() {
-      const body = document.body;
-      const themeIcon = document.getElementById('theme-icon');
-      const currentTheme = body.getAttribute('data-theme');
-      
-      if (currentTheme === 'dark') {
-        body.removeAttribute('data-theme');
-        themeIcon.textContent = '🌙';
-        localStorage.setItem('theme', 'light');
-      } else {
-        body.setAttribute('data-theme', 'dark');
-        themeIcon.textContent = '☀️';
-        localStorage.setItem('theme', 'dark');
-      }
-    }
-    
-    // Load saved theme on page load
-    document.addEventListener('DOMContentLoaded', function() {
-      const savedTheme = localStorage.getItem('theme');
-      const themeIcon = document.getElementById('theme-icon');
-      
-      if (savedTheme === 'dark') {
-        document.body.setAttribute('data-theme', 'dark');
-        themeIcon.textContent = '☀️';
-      }
-    });
   </script>
 </body>
 </html>
